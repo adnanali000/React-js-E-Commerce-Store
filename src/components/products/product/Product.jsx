@@ -11,7 +11,7 @@ const Product = ({product,onAddToCart}) => {
          <CardMedia className={classes.media} image={product.image.url} title={product.name} />
          <CardContent>
              <div className={classes.cardContent}>
-                <Typography variant='h6' gutterbutton="true">
+                <Typography variant='h6' gutterBottom>
                     {product.name}
                 </Typography>
                 <Typography variant='h6'>

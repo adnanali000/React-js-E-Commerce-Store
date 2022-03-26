@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Products, Navbar, Cart } from './components'
+import { Products, Navbar, Cart,Checkout } from './components'
 import { commerce } from './lib/commerce'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -50,6 +50,7 @@ const App = () => {
         <Navbar totalItems={cart.total_items} />
         <Routes>
           <Route path='/' element={<Products products={products} onAddToCart={handleAddToCart} />} />
+          <Route path='/checkout' element={<Checkout />} />
           <Route 
           path='/cart' 
           element={
