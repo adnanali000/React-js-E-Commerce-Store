@@ -1,6 +1,6 @@
 import React from 'react'
 import { AppBar, Toolbar, IconButton, Badge, Typography, MenuItem, Menu } from '@material-ui/core'
-import { ShoppingCart } from '@material-ui/icons'
+import { ShoppingCart,ArrowBack } from '@material-ui/icons'
 import logo from '../../assests/commerce.png'
 import useStyles from './styles'
 import { Link, useLocation } from 'react-router-dom'
@@ -18,7 +18,7 @@ const Navbar = ({ totalItems }) => {
                         E-commerce
                     </Typography>
                     <div className={classes.grow} />
-                    {location.pathname === '/' && (
+                    {location.pathname === '/' ? (
                         <div className={classes.button}>
                             <IconButton component={Link} to='/cart' aria-label='Show card items' color='inherit'>
                                 <Badge badgeContent={totalItems} color='secondary'>
@@ -26,7 +26,7 @@ const Navbar = ({ totalItems }) => {
                                 </Badge>
                             </IconButton>
                         </div>
-                    )}
+                    ): <Link to='/'><ArrowBack /></Link>}
                 </Toolbar>
             </AppBar>
 
