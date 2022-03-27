@@ -33,3 +33,5 @@ const PaymentForm = ({checkoutToken,backStep}) => {
 }
 
 export default PaymentForm
+
+// REACT_APP_CHEC_PUBLIC_KEY = pk_41545036e553b3dc575f8f9cfdd814c262bfb14d9eb6b
