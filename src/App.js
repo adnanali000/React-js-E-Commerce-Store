@@ -4,14 +4,41 @@ import { commerce } from './lib/commerce'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 const App = () => {
-  const [products, setProducts] = useState([]);
+
+  //for all product
+  // const [products, setProducts] = useState([]);
+
+  const [categories,setCategories] = useState([]);
+  
+  
   const [cart, setCart] = useState({});
   const [order,setOrder] = useState({})
   const [errorMessage,setErrorMessage] = useState('');
 
+  //list of all products
+  // const fetchProducts = async () => {
+  //   const { data } = await commerce.products.list();
+  //   setProducts(data);
+  // }
+
+  //categories data
   const fetchProducts = async () => {
-    const { data } = await commerce.products.list();
-    setProducts(data);
+    const {data:products} = await commerce.products.list({limit:200});
+    const {data: categoriesData} = await commerce.categories.list();
+
+    const productsPerCategory = categoriesData.reduce((acc,category)=>{
+      return [
+        ...acc,
+        {
+          ...category,
+          productsData: products.filter((product)=>
+            product.categories.find((cat)=>cat.id===category.id)
+          )
+        }
+      ]
+    },[])
+    // console.log({productsPerCategory})
+    setCategories(productsPerCategory);
   }
 
   const fetchCart = async () => {
@@ -68,7 +95,7 @@ const App = () => {
       <div>
         <Navbar totalItems={cart.total_items} />
         <Routes>
-          <Route path='/' element={<Products products={products} onAddToCart={handleAddToCart} />} />
+          <Route path='/' element={<Products categories={categories} onAddToCart={handleAddToCart} />} />
           <Route path='/checkout' element={<Checkout cart={cart}  order={order} onCaptureCheckout={handleCaptureCheckout} error={errorMessage} />} />
           <Route 
           path='/cart' 
