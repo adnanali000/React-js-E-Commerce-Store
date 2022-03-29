@@ -3,6 +3,7 @@ import {Container,Typography,Grid,Button} from '@material-ui/core'
 import useStyles from './styles'
 import CartItem from './cartItem/CartItem'
 import {Link} from 'react-router-dom'
+import '../products/style.css'
 
 const Cart = ({cart,handleUpdateCartQty,handleRemoveFromCart,handleEmptyCart}) => {
     // const isEmpty = !cart.line_items.length;
@@ -40,11 +41,15 @@ const Cart = ({cart,handleUpdateCartQty,handleRemoveFromCart,handleEmptyCart}) =
     if(!cart.line_items) return 'Loading...';
 
   return (
+    <>
+    <div className="productTop">
     <Container>
         <div className={classes.toolbar} />
         <Typography className={classes.title} variant="h4" gutterBottom>Your Shopping Cart</Typography>
         {!cart.line_items.length ? <EmptyCart /> : <FilledCart />}
     </Container>
+    </div>
+    </>
   )
 }
 

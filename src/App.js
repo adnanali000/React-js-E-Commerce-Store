@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Products, Navbar, Cart,Checkout } from './components'
+import { Products, Navbar, Cart,Checkout,Footer } from './components'
 import { commerce } from './lib/commerce'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -108,6 +108,7 @@ const App = () => {
           />
           } />
         </Routes>
+        <Footer />
       </div>
     </Router>
   )

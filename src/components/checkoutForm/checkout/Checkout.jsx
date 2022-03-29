@@ -6,6 +6,7 @@ import { commerce } from '../../../lib/commerce';
 import AddressForm from '../AddressForm';
 import PaymentForm from '../PaymentForm';
 import useStyles from './styles';
+import '../../products/style.css'
 
 const steps = ['Shipping address', 'Payment details'];
 
@@ -87,6 +88,7 @@ const Checkout = ({ cart, onCaptureCheckout, order, error }) => {
 
   return (
     <>
+    <div className='productTop'>
       <CssBaseline />
       <div className={classes.toolbar} />
       <main className={classes.layout}>
@@ -102,6 +104,7 @@ const Checkout = ({ cart, onCaptureCheckout, order, error }) => {
           {activeStep === steps.length ? <Confirmation /> : checkoutToken && <Form />}
         </Paper>
       </main>
+      </div>
     </>
   );
 };
