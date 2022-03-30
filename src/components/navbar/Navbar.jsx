@@ -18,12 +18,12 @@ const Navbar = ({ totalItems }) => {
                             <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
                         </svg> */}
                         <img src={logo} alt='e-commerce' className="w-10 h-10 text-white rounded-full" />
-                        <span className="ml-3 text-xl text-white">Accessories Hub</span>
+                        <span className="ml-3 text-xl text-white">Accessories Store</span>
                     </a>
                     <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
                         <Link to="/" className="mr-5 hover:text-gray-900">Home</Link>
-                        <Link to="/" className="mr-5 hover:text-gray-900">About Us</Link>
-                        <Link to="/" className="mr-5 hover:text-gray-900">Contact us</Link>
+                        <Link to="/about" className="mr-5 hover:text-gray-900">About Us</Link>
+                        <Link to="/contact" className="mr-5 hover:text-gray-900">Contact us</Link>
                     </nav>
                     {
                      location.pathname === '/' ? (   

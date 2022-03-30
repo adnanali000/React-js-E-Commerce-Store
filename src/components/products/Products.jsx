@@ -3,6 +3,7 @@ import { Grid, Container, Typography } from '@material-ui/core'
 import Product from './product/Product'
 import useStyles from './styles'
 import './style.css'
+import {Link} from 'react-router-dom'
 
 
 
@@ -19,7 +20,9 @@ const Products = ({ categories, onAddToCart }) => {
       </h1>
       <p className="mb-8 leading-relaxed">This Headphone Provides High Sound Quality And Strong Deep Bass And Crystal Clear Pitch. Features A Built-In Remote Control To Adjust Volume, Play / Pause Music, Control Playback Of Music And Video, Track Your Favorite Song. This Can Be Operated With The Built-In Buttons On The Cord.</p>
       <div className="flex justify-center">
+        <a href="#Handsfree">
         <button className="inline-flex text-white border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg" style={{backgroundColor:'#02494d'}}>Shop Now</button>
+        </a>
       </div>
     </div>
     <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
@@ -44,8 +47,8 @@ const Products = ({ categories, onAddToCart }) => {
                 //   index % 2 !== 0 ? "linear-gradient(to bottom right, #3d4a5d,#3d4a5d,#bb86fc)":" ",
               }}
             >
-              <Container>
-                <Typography style={{ paddingBottom: '20px', paddingTop: '20px', color:'#02494d' }} variant="h4">{category.name}</Typography>
+              <Container id={category.name}>
+                <Typography style={{ paddingBottom: '20px', paddingTop: '20px', color:'#02494d' }} variant="h4" >{category.name}</Typography>
                 <Grid container justifyContent='center' spacing={4}>
                   {category.productsData.map((product) => (
                     <Grid item key={product.id} xs={12} s={6} md={4} lg={3} >

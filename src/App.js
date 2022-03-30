@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Products, Navbar, Cart,Checkout,Footer } from './components'
+import { Products, Navbar, Cart,Checkout,Footer,Contactus,Aboutus } from './components'
 import { commerce } from './lib/commerce'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -97,6 +97,10 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Products categories={categories} onAddToCart={handleAddToCart} />} />
           <Route path='/checkout' element={<Checkout cart={cart}  order={order} onCaptureCheckout={handleCaptureCheckout} error={errorMessage} />} />
+          <Route path='/contact' element={<Contactus />} />
+          <Route path='/about' element={<Aboutus />} />
+
+  
           <Route 
           path='/cart' 
           element={
