@@ -1,7 +1,8 @@
 import React from 'react'
 import { AppBar, Toolbar, IconButton, Badge, Typography, MenuItem, Menu } from '@material-ui/core'
 import { ShoppingCart, ArrowBack } from '@material-ui/icons'
-import logo from '../../assests/commerce.png'
+// import logo from '../../assests/commerce.png'
+import logo from '../../assests/hub.jpg'
 import useStyles from './styles'
 import { Link, useLocation } from 'react-router-dom'
 
@@ -17,8 +18,8 @@ const Navbar = ({ totalItems }) => {
                         {/* <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
                             <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
                         </svg> */}
-                        <img src={logo} alt='e-commerce' className="w-10 h-10 text-white rounded-full" />
-                        <span className="ml-3 text-xl text-white">Accessories Store</span>
+                        <img src={logo} alt='e-commerce' className="text-white rounded-full" style={{width:'50px',height:'50px'}} />
+                        <span className="ml-3 text-xl text-white">Accessories Hub</span>
                     </a>
                     <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
                         <Link to="/" className="mr-5 hover:text-gray-900">Home</Link>
