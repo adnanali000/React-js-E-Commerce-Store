@@ -49,30 +49,21 @@ const Checkout = ({ cart, onCaptureCheckout, order, error }) => {
           }, 3000);
         }
 
-      let Confirmation = ()=> order.customer ? (
-       <>
-          <div>
-              <Typography variant="h5">Thank you for your purchase, {order.customer.firstname} {order.customer.lastname}</Typography>
+        let Confirmation = () => (order.customer ? (
+          <>
+            <div>
+              <Typography variant="h5">Thank you for your purchase, {order.customer.firstname} {order.customer.lastname}!</Typography>
               <Divider className={classes.divider} />
-              <Typography variant="subtitle2">Order ref: {order.customer_reference}</Typography>
+              <Typography variant="subtitle2">Order ref: {order.checkoutToken}</Typography>
+            </div>
+            <br />
+            <Button component={Link} variant="outlined" type="button" to="/">Back to home</Button>
+          </>
+        ) : (
+          <div className={classes.spinner}>
+            <CircularProgress />
           </div>
-          <br />
-          <Button component={Link} to="/" variant="outlined" type="button">Back to Home</Button>
-       </>
-    ) : isFinished ? (
-      <>
-      <div>
-          <Typography variant="h5">Thank you for your purchase</Typography>
-          <Divider className={classes.divider} />
-      </div>
-      <br />
-      <Button component={Link} to="/" variant="outlined" type="button">Back to Home</Button>
-   </>
-    ) : (
-      <div className={classes.spinner}>
-        <CircularProgress />
-      </div>
-    )
+        ));
 
     if(error){
       <>

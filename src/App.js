@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { Products, Navbar, Cart,Checkout,Footer,Contactus,Aboutus } from './components'
 import { commerce } from './lib/commerce'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {fireDb,storage} from './firebase';
+import {collection,addDoc,doc} from 'firebase/firestore'
 
 const App = () => {
 
@@ -12,7 +14,7 @@ const App = () => {
   
   
   const [cart, setCart] = useState({});
-  const [order,setOrder] = useState({})
+  const [order,setOrder] = useState('')
   const [errorMessage,setErrorMessage] = useState('');
 
   //list of all products
@@ -71,14 +73,15 @@ const App = () => {
     setCart(newCart);
   }
 
-  const handleCaptureCheckout = async(checkoutTokenId,newOrder)=>{
+  const ordersCollectionRef = collection(fireDb, "Orders");
+  const handleCaptureCheckout = async(newOrder)=>{
     try {
-      const incomingOrder = await commerce.checkout.capture(checkoutTokenId,newOrder)
-
-      setOrder(incomingOrder)
+      // const incomingOrder = await commerce.checkout.capture(checkoutTokenId,newOrder)
+      await addDoc(ordersCollectionRef, newOrder);
+      setOrder(newOrder)
       refreshCart();
     } catch (error) {
-      setErrorMessage(error.data.error.message)
+      setErrorMessage(error)
     }
   }
 
